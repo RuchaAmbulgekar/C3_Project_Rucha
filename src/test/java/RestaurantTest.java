@@ -32,40 +32,34 @@ class RestaurantTest {
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
        //Arrange
-
         boolean isRestaurantOpenFlag;
         LocalTime currentTime = LocalTime.parse("13:00:00");
         Restaurant resSpy = Mockito.spy(restaurant);
 
         //Act
-
         Mockito.when(resSpy.getCurrentTime()).thenReturn(currentTime);
         isRestaurantOpenFlag = resSpy.isRestaurantOpen();
 
         //Assert
-
         Assertions.assertTrue(isRestaurantOpenFlag);
     }
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
        //Arrange
-
         boolean isRestaurantOpenFlag;
         LocalTime currentTime = LocalTime.parse("08:30:00");
         Restaurant resSpy = Mockito.spy(restaurant);
 
         //Act
-
         Mockito.when(resSpy.getCurrentTime()).thenReturn(currentTime);
         isRestaurantOpenFlag = resSpy.isRestaurantOpen();
 
         //Assert
-
         Assertions.assertFalse(isRestaurantOpenFlag);
 
     }
-    
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
