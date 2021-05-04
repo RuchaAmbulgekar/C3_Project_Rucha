@@ -30,7 +30,7 @@ public class Restaurant {
     public List<Item> getMenu() {
         if(menu.size()>0) {
                 return menu;
-            }
+        }
             return null;
     }
 
