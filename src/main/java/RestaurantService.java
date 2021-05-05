@@ -11,7 +11,6 @@ public class RestaurantService {
             if(restaurant.getName().equals(restaurantName))
                 return restaurant;
         }
-
         throw new restaurantNotFoundException(restaurantName);
     }
 
