@@ -59,6 +59,29 @@ class RestaurantTest {
         Assertions.assertFalse(isRestaurantOpenFlag);
 
     }
+
+    @Test
+    public void selecting_item_from_menu_should_increase_selectedItemList_size_by_1(){
+
+        int initialSize = restaurant.getSelectedItemList().size();
+        restaurant.SelectItemFromMenuList("Sweet corn soup");
+        assertEquals(initialSize+1,restaurant.getSelectedItemList().size());
+    }
+
+    @Test
+    public void calculateOrderValue_method_should_return_total_price_for_all_the_selected_items_from_the_menu_list(){
+
+        restaurant.SelectItemFromMenuList("Sweet corn soup");
+        restaurant.SelectItemFromMenuList("Vegetable lasagne");
+
+        List<String> selectedItemList =  restaurant.getSelectedItemList();
+
+        int orderValue = restaurant.calculateOrderValue(selectedItemList);
+
+        int ExpectedOrderValue = restaurant.getMenu().get(0).getPrice() + restaurant.getMenu().get(1).getPrice();
+
+        Assertions.assertEquals(ExpectedOrderValue,orderValue);
+    }
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
