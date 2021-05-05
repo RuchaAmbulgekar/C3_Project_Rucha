@@ -30,6 +30,12 @@ class RestaurantServiceTest {
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
 
+        List<Restaurant> resList = new ArrayList<Restaurant>();
+        resList.add(restaurant);
+        RestaurantService resServiceSpy = Mockito.spy(RestaurantService.class);
+
+        //Act
+        Mockito.when(resServiceSpy.getRestaurants()).thenReturn(resList);
         Restaurant res = service.findRestaurantByName("Amelie's cafe");
 
         //Assert
@@ -40,6 +46,12 @@ class RestaurantServiceTest {
 
     @Test
     public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException {
+
+        List<Restaurant> resList = new ArrayList<Restaurant>();
+        resList.add(restaurant);
+        RestaurantService resServiceSpy = Mockito.spy(RestaurantService.class);
+
+        Mockito.when(resServiceSpy.getRestaurants()).thenReturn(resList);
         //Assert
 
         Assertions.assertThrows(restaurantNotFoundException.class,
